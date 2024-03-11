@@ -4462,6 +4462,9 @@ CCX_MAX_STUDENTS_ALLOWED = 200
 FINANCIAL_ASSISTANCE_MIN_LENGTH = 1250
 FINANCIAL_ASSISTANCE_MAX_LENGTH = 2500
 
+### Random configurable username string length
+RANDOM_USERNAME_STRING_LENGTH = 4
+
 #### Registration form extension. ####
 # Only used if combined login/registration is enabled.
 # This can be used to add fields to the registration page.

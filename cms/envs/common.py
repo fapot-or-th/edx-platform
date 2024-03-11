@@ -834,6 +834,9 @@ ELASTIC_SEARCH_CONFIG = [
     }
 ]
 
+### Random configurable username string length
+RANDOM_USERNAME_STRING_LENGTH = 4
+
 # These are standard regexes for pulling out info like course_ids, usage_ids, etc.
 # They are used so that URLs with deprecated-format strings still work.
 from lms.envs.common import (

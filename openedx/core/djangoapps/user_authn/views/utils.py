@@ -1,6 +1,7 @@
 """
 User Auth Views Utils
 """
+import logging
 from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import gettext as _
@@ -11,7 +12,11 @@ from common.djangoapps.third_party_auth import pipeline
 from common.djangoapps.third_party_auth.models import clean_username
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangoapps.geoinfo.api import country_code_from_ip
+import random
+import string
+from datetime import datetime
 
+log = logging.getLogger(__name__)
 API_V1 = 'v1'
 UUID4_REGEX = '[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}'
 ENTERPRISE_ENROLLMENT_URL_REGEX = fr'/enterprise/{UUID4_REGEX}/course/{settings.COURSE_KEY_REGEX}/enroll'
@@ -108,3 +113,60 @@ def get_mfe_context(request, redirect_to, tpa_hint=None):
         'countryCode': country_code,
     })
     return context
+
+
+def generate_username(username_initials):
+    """
+    Generate a username based on initials and current date.
+
+    Args:
+    - username_initials (str): Initials used for constructing the username.
+
+    Returns:
+    - str: Generated username.
+    """
+    current_year = datetime.now().year % 100
+    current_month = datetime.now().month
+
+    random_string = ''.join(random.choices(
+                            string.ascii_letters +
+                            string.digits,
+                            k=settings.RANDOM_USERNAME_STRING_LENGTH))
+
+    username = f"{username_initials}_{current_year:02d}{current_month:02d}_{random_string}"
+    return username
+
+
+def generate_username_from_request_payload(data):
+    """
+    Generate a username based on the provided data.
+
+    Args:
+    - data (dict): Dictionary containing user data, including 'first_name', 'last_name', or 'name'.
+
+    Returns:
+    - str: Generated username.
+    """
+    try:
+        if 'first_name' in data and 'last_name' in data:
+            first_name = data['first_name']
+            last_name = data['last_name']
+
+            username_initials = f"{first_name[0]}{last_name[0]}"
+            return generate_username(username_initials)
+        elif 'name' in data:
+            name = data['name'].strip()
+            name_parts = name.split()
+
+            # Take only the first two words for initials
+            if len(name_parts) >= 2:
+                initials = [word[0] for word in name_parts[:2]]
+            else:
+                initials = [name_parts[0][0]]
+
+            username_initials = ''.join(initials)
+            return generate_username(username_initials)
+    except KeyError as e:
+        log.error(f"KeyError: {e}")
+
+    return None
