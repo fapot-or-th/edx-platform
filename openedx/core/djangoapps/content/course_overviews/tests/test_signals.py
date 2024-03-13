@@ -130,7 +130,7 @@ class CourseOverviewSignalsTestCase(ModuleStoreTestCase):
         )
 
         with self.captureOnCommitCallbacks(execute=True):
-            setattr(course, "end", self.NEXT_WEEK)
+            course.end = self.NEXT_WEEK
             self.store.update_item(course, ModuleStoreEnum.UserID.test)
 
         assert mock_signal.called

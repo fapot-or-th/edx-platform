@@ -14,13 +14,9 @@ class CredentialsApiTests(CredentialsApiConfigMixin, TestCase):
     """
     Tests for the Public Pyton API exposed by the credentials Django app.
     """
-
     def setUp(self):
         super().setUp()
-
-    def tearDown(self):
         CredentialsApiConfig.objects.all().delete()
-        super().tearDown()
 
     def test_is_credentials_enabled_config_enabled(self):
         """

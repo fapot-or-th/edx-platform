@@ -9,7 +9,6 @@ from django.test import TestCase
 from opaque_keys.edx.keys import CourseKey
 
 from common.djangoapps.student.tests.factories import UserFactory
-from openedx.core.djangoapps.content.course_overviews.signals import COURSE_PACING_CHANGED
 from openedx.core.djangoapps.content.course_overviews.tests.factories import (
     CourseOverviewFactory,
 )
