@@ -1,0 +1,4 @@
+name: oauthconfig
+version: 0.0.1
+patches:
+    SOCIAL_AUTH_OAUTH_SECRETS: {"google-oauth2": "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"}
