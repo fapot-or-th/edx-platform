@@ -637,7 +637,7 @@ FEATURES = {
     # .. toggle_creation_date: 2015-03-13
     # .. toggle_target_removal_date: None
     # .. toggle_tickets: https://github.com/openedx/edx-platform/pull/7113
-    'CERTIFICATES_HTML_VIEW': False,
+    'CERTIFICATES_HTML_VIEW': True,
 
     # .. toggle_name: FEATURES['CUSTOM_CERTIFICATE_TEMPLATES_ENABLED']
     # .. toggle_implementation: DjangoSetting
@@ -720,7 +720,7 @@ FEATURES = {
     # .. toggle_warning: You should set the languages in the DarkLangConfig table to get this working. If you have
     #   not set any languages in the DarkLangConfig table then the language selector will not be visible in the header.
     # .. toggle_tickets: https://github.com/openedx/edx-platform/pull/15133
-    'SHOW_HEADER_LANGUAGE_SELECTOR': False,
+    'SHOW_HEADER_LANGUAGE_SELECTOR': True,
 
     # At edX it's safe to assume that English transcripts are always available
     # This is not the case for all installations.
@@ -785,7 +785,7 @@ FEATURES = {
     # .. toggle_use_cases: open_edx
     # .. toggle_creation_date: 2017-03-03
     # .. toggle_tickets: https://openedx.atlassian.net/browse/OSPR-1560
-    'ENABLE_COOKIE_CONSENT': False,
+    'ENABLE_COOKIE_CONSENT': True,
 
     # Whether or not the dynamic EnrollmentTrackUserPartition should be registered.
     'ENABLE_ENROLLMENT_TRACK_USER_PARTITION': True,
