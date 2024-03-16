@@ -5055,7 +5055,7 @@ HIBP_LOGIN_BLOCK_PASSWORD_FREQUENCY_THRESHOLD = 5
 # .. toggle_creation_date: 2022-04-21
 # .. toggle_target_removal_date: None
 # .. toggle_tickets: https://openedx.atlassian.net/browse/VAN-838
-ENABLE_DYNAMIC_REGISTRATION_FIELDS = False
+ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
 
 ############## Settings for EmailChangeMiddleware ###############
 
