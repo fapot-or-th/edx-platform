@@ -126,6 +126,21 @@ def add_gender_field(is_field_required=False):
         'options': options,
     }
 
+def add_phone_number_field(is_field_required=False):
+    """
+    Returns the phone number field description
+    """
+    # Translators: This label appears above a field which allows the
+    # user to input the Phone number
+    phone_number_label = _("Phone")
+
+    return {
+        'name': 'phone_number',
+        'type': SUPPORTED_FIELDS_TYPES['TEXT'],
+        'label': phone_number_label,
+        'error_message': accounts.REQUIRED_FIELD_PHONE_NUMBER_MSG if is_field_required else '',
+    }
+
 
 def add_year_of_birth_field(is_field_required=False):
     """

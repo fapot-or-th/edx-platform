@@ -456,6 +456,7 @@ REGISTRATION_EXTRA_FIELDS:
     confirm_email: hidden
     country: required
     gender: optional
+    phone_number: optional
     goals: optional
     honor_code: required
     level_of_education: optional

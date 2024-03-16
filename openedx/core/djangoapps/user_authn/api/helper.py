@@ -25,6 +25,7 @@ class RegistrationFieldsContext(APIView):
         'state',
         'country',
         'gender',
+        'phone_number',
         'year_of_birth',
         'level_of_education',
         'company',
