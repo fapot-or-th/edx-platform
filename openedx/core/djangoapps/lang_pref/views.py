@@ -11,6 +11,9 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
 from openedx.core.djangoapps.lang_pref.helpers import get_language_cookie, set_language_cookie
+from openedx.core.djangoapps.lang_pref.api import released_languages
+
+from rest_framework.views import APIView
 
 
 @ensure_csrf_cookie
@@ -25,3 +28,11 @@ def update_language(request):
         if get_language_cookie(request) != language:
             set_language_cookie(request, response, language)
     return response
+    
+class LangPrefView(APIView):
+
+    def get_released_languages():
+        """
+        GET /api/lang_pref/v1/released_languages
+        """
+        return released_languages()

@@ -14,6 +14,20 @@ securityDefinitions:
 security:
   - Basic: []
 paths:
+  /lang_pref/v1/released_languages:
+    get:
+      operationId: lang_pref_v1_released_languages
+      description: GET /api/lang_pref/v1/released_languages
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      consumes:
+        - application/json
+        - application/merge-patch+json
+      tags:
+        - lang_pref
+    parameters: []
   /agreements/v1/integrity_signature/{course_id}:
     get:
       operationId: agreements_v1_integrity_signature_read
